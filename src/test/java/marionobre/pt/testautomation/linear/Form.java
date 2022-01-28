@@ -31,14 +31,14 @@ public class Form {
     //changes the browser to fullscreen
     driver.manage().window().fullscreen();
     //fills data on the required fields
-    driver.findElement(By.id("userName")).sendKeys("Big Bird");
-    driver.findElement(By.id("userEmail")).sendKeys("bigbird@sesamestreet.com");
-    driver.findElement(By.id("currentAddress")).sendKeys("The Bird House");
-    driver.findElement(By.id("permanentAddress")).sendKeys("Sesame Street");
+    driver.findElement(By.id("userName")).sendKeys("Super Mario");
+    driver.findElement(By.id("userEmail")).sendKeys("mario@supermario.com");
+    driver.findElement(By.id("currentAddress")).sendKeys("Mushroom Kingdom");
+    driver.findElement(By.id("permanentAddress")).sendKeys("World 1");
     //clicks the submit button
     driver.findElement(By.id("submit")).click();
     //checks that the text is what was expected
-    assertThat(driver.findElement(By.id("name")).getText(), is("Name:Big Bird"));
+    assertThat(driver.findElement(By.id("name")).getText(), is("Name:Super Mario"));
   }
   
   @Test
@@ -48,40 +48,26 @@ public class Form {
     //changes the browser to fullscreen
     driver.manage().window().fullscreen();
     //fills data on the required fields
-    driver.findElement(By.id("userName")).sendKeys("Big Bird");
-    driver.findElement(By.id("userEmail")).sendKeys("bigbird@sesamestreet.com");
-    driver.findElement(By.id("currentAddress")).sendKeys("The Bird House");
-    driver.findElement(By.id("permanentAddress")).sendKeys("Sesame Street");
+    driver.findElement(By.id("userName")).sendKeys("Luigi");
+    driver.findElement(By.id("userEmail")).sendKeys("luigi@supermario.com");
+    driver.findElement(By.id("currentAddress")).sendKeys("The Mansion");
+    driver.findElement(By.id("permanentAddress")).sendKeys("World 2");
     //clicks the submit button
     driver.findElement(By.id("submit")).click();
     //checks that the text is what was expected
-    assertThat(driver.findElement(By.id("email")).getText(), is("Email:bigbird@sesamestreet.com"));
+    assertThat(driver.findElement(By.id("email")).getText(), is("Email:luigi@supermario.com"));
   }
   
   @Test
-  public void FormTestNameForceFail() {
+  public void FormTestNameNewData() {
     driver.get("https://demoqa.com/text-box");
     driver.manage().window().fullscreen();
-    driver.findElement(By.id("userName")).sendKeys("Big Bird");
-    driver.findElement(By.id("userEmail")).sendKeys("bigbird@sesamestreet.com");
-    driver.findElement(By.id("currentAddress")).sendKeys("The Bird House");
-    driver.findElement(By.id("permanentAddress")).sendKeys("Sesame Street");
+    driver.findElement(By.id("userName")).sendKeys("Toad");
+    driver.findElement(By.id("userEmail")).sendKeys("toad@supermario.com");
+    driver.findElement(By.id("currentAddress")).sendKeys("The Forest");
+    driver.findElement(By.id("permanentAddress")).sendKeys("World 3");
     driver.findElement(By.id("submit")).click();
-    //checks that the text is what was expected (in this test it will fail on purpose
-    assertThat(driver.findElement(By.id("name")).getText(), is("Name:Elmo"));
-  }
-  
-  @Test
-  public void FormTestEmailForceFail() {
-    driver.get("https://demoqa.com/text-box");
-    driver.manage().window().fullscreen();
-    driver.findElement(By.id("userName")).sendKeys("Big Bird");
-    driver.findElement(By.id("userEmail")).sendKeys("bigbird@sesamestreet.com");
-    driver.findElement(By.id("currentAddress")).sendKeys("The Bird House");
-    driver.findElement(By.id("permanentAddress")).sendKeys("Sesame Street");
-    driver.findElement(By.id("submit")).click();
-    //checks that the text is what was expected (in this test it will fail on purpose
-    assertThat(driver.findElement(By.id("email")).getText(), is("Email:bigbirdsesamestreet.com"));
+    assertThat(driver.findElement(By.id("name")).getText(), is("Name:Toad"));
   }
   
 }

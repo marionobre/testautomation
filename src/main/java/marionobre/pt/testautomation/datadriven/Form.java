@@ -42,7 +42,7 @@ TestRunner runner;
 		setPermanentAddress("Real Rambo");
 	}
 	
-	public void dataFile() {
+	public boolean dataFile() {
 		try {
 			HashMap<String, String> Data = new HashMap<String, String>();
 			ExcelReader readFile = new ExcelReader();
@@ -53,15 +53,16 @@ TestRunner runner;
 				setCurrentAddress(Data.get(String.valueOf(i) + 		"Address1"));
 				setPermanentAddress(Data.get(String.valueOf(i) + 	"Address2"));
 				clickSubmit();
-				verify("name", 				Data.get(String.valueOf(i) + "Name"));
-				verify("email", 			Data.get(String.valueOf(i) + "Email"));
-				verify("currentaddress", 	Data.get(String.valueOf(i) + "Address1"));
-				verify("permanentaddress", 	Data.get(String.valueOf(i) + "Address2"));
+				if (!verify("name", 			"Name:" + 					Data.get(String.valueOf(i) + "Name"))) { return false;};
+				if (!verify("email", 			"Email:" + 					Data.get(String.valueOf(i) + "Email"))) { return false;};
+				if (!verify("currentaddress", 	"Current Address :" + 		Data.get(String.valueOf(i) + "Address1"))) { return false;};
+				if (!verify("permanentaddress", "Permananet Address :" +	Data.get(String.valueOf(i) + "Address2"))) { return false;};
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return true;
 	}
 	
 	public Boolean verify(String field, String expectedValue) {
@@ -71,9 +72,9 @@ TestRunner runner;
 		case "email":
 			return runner.createObject("email").getText().equals(expectedValue);
 		case "currentaddress":
-			return runner.createObject("currentAddress").getText().equals(expectedValue);
+			return runner.createObject("currentAddress",1).getText().equals(expectedValue);
 		case "permanentaddress":
-			return runner.createObject("permanentAddress").getText().equals(expectedValue);
+			return runner.createObject("permanentAddress",1).getText().equals(expectedValue);
 		default:
 			return false;
 		}

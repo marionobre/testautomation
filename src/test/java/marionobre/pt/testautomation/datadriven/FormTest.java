@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import org.junit.Before;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.After;
 public class FormTest extends TestRunner{
   
@@ -24,7 +26,7 @@ public class FormTest extends TestRunner{
   @Test
   public void DataDrivenTest() {
 	  navigate("https://demoqa.com/text-box");
-	  formPage.dataFile();
+	  assertTrue(formPage.dataFile());
   }
   
 }

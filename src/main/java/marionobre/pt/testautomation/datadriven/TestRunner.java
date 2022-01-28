@@ -42,4 +42,9 @@ public class TestRunner{
 		element = driver.findElement(By.id(id));
 		return element;
 	}
+
+	public WebElement createObject(String id, int index) {
+		element = driver.findElements(By.id(id)).get(index);
+		return element;
+	}
 }

@@ -19,10 +19,12 @@ public class FormTest extends TestRunner{
 	 startTest();
 	 formPage = new Form(getRunner());	 
   }
+  
   @After
   public void tearDown() {
     endTest();
   }
+  
   @Test
   public void FormTestName() {
     navigate("https://demoqa.com/text-box");
@@ -40,19 +42,11 @@ public class FormTest extends TestRunner{
   }
   
   @Test
-  public void FormTestNameForceFail() {
+  public void FormTestAddress() {
     navigate("https://demoqa.com/text-box");
     formPage.fillForm();
     formPage.clickSubmit();
-    assertThat(driver.findElement(By.id("name")).getText(), is("Name:Balboa"));
-  }
-  
-  @Test
-  public void FormTestEmailForceFail() {
-    navigate("https://demoqa.com/text-box");
-    formPage.fillForm();
-    formPage.clickSubmit();
-    assertThat(driver.findElement(By.id("email")).getText(), is("Email:juan.rambo@mail.com"));
+    assertThat(driver.findElements(By.id("currentAddress")).get(1).getText(), is("Current Address :Rambo Street"));
   }
   
 }
